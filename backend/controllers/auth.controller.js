@@ -3,15 +3,14 @@ const User = require('../models/user.model');
 
 // import bcyptjs to hash the passwords->
 const bcryptjs = require('bcryptjs');
+const { errorHandler } = require('../utils/error');
 
 // Controller logic -->
-exports.authRoute = async(req, res) => {
+exports.authRoute = async(req, res, next) => {
     try{
         const {username, email, password} = req.body;
         if(!username || !email || !password || username === '' || email === '' || password === ''){
-            return res.status(400).json({
-                message:"All Fields are Required"
-            });
+            next(errorHandler(400, 'All fields are required'));
         }
 
         // using bcryptjs to hash passwords here and passing it in new user... we keep the username and email same but hash the password
@@ -28,7 +27,7 @@ exports.authRoute = async(req, res) => {
             res.json({message: 'Signup successful'});
         }
         catch(error){
-            res.status(500).json({message:error.message})
+            next(error);
         }
     }
     catch(err){

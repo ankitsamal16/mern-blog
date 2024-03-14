@@ -24,3 +24,16 @@ const userRouter = require('./routes/user.route');
 app.use('/api/user', userRouter);
 const authRouter = require('./routes/auth.route');
 app.use('/api/auth', authRouter);
+
+
+
+// middleware and function to handle errors
+app.use((err, req, res, next) => {
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error, Try After Sometime';
+    res.status(statusCode).json({
+        success: false,
+        statusCode,
+        message
+    })
+})
