@@ -20,5 +20,7 @@ app.listen(PORT, () => {
 
 // create a api -> 
 
-const userRouter = require('./routes/user.route')
+const userRouter = require('./routes/user.route');
 app.use('/api/user', userRouter);
+const authRouter = require('./routes/auth.route');
+app.use('/api/auth', authRouter);
