@@ -1,7 +1,7 @@
 // import model ->
 const User = require('../models/user.model');
 
-// import bcyptjs to hash the passwords->
+// import bcyptjs to hash the passwords -->
 const bcryptjs = require('bcryptjs');
 const { errorHandler } = require('../utils/error');
 
