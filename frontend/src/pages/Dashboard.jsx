@@ -20,10 +20,9 @@ export default function Dashboard() {
       <div className="md:w-56">
         <Dashsidebar/>
       </div>
+      
       {/* Profile -> */}
-      <div>
-        {tab === 'profile' && <DashProfile/>}
-      </div>
+      {tab === 'profile' && <DashProfile/>}
     </div>
   )
 }
